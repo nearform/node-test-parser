@@ -1,6 +1,6 @@
 import assert from 'node:assert'
 import test from 'node:test'
-import parseReport from '../../lib/parse-report.js'
+import parseReport from '../../parse-report.js'
 import mockedSource from '../resources/mocked-source.js'
 
 test('validates parsed report data', async () => {

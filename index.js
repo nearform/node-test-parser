@@ -1,3 +1,3 @@
-import parseReport from './lib/parse-report.js'
+import parseReport from './parse-report.js'
 
 export default parseReport
