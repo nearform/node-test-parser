@@ -1,25 +1,31 @@
 {
-  "name": "hub-template",
+  "name": "node-test-parser",
   "version": "1.0.0",
-  "description": "Template to start a new repository on the hub",
+  "description": "Node.js test runner report stream parser",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "npm run test:unit && npm run test:e2e && npm run test:typescript",
+    "test:unit": "node --test --test-reporter spec ./test/unit",
+    "test:e2e": "./test/e2e/compare.sh",
+    "test:typescript": "tsd",
     "prepare": "husky install"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nearform/hub-template.git"
+    "url": "git+https://github.com/nearform/node-test-parser.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["test", "report"],
+  "author": {
+    "name": "Romulo Vitoi",
+    "email": "romulo.vitoi@nearform.com"
+  },
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nearform/hub-template/issues"
+    "url": "https://github.com/nearform/node-test-parser/issues"
   },
-  "homepage": "https://github.com/nearform/hub-template#readme",
+  "homepage": "https://github.com/nearform/node-test-parser#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
@@ -28,7 +34,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.4",
+    "tsd": "^0.26.0"
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix"
