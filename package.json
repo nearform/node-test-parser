@@ -35,7 +35,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
     "prettier": "^2.8.4",
-    "tsd": "^0.26.1"
+    "tsd": "^0.27.0"
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix"
