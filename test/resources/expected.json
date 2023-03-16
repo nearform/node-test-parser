@@ -1,87 +1,53 @@
 {
-  "testSuites": [
+  "tests": [
     {
-      "name": "test/resources/sample-tests/broken.test.js",
+      "name": "calls a nonexistent method",
       "file": "test/resources/sample-tests/broken.test.js",
-      "tests": [
-        {
-          "name": "calls a nonexistent method",
-          "file": "test/resources/sample-tests/broken.test.js",
-          "tests": [],
-          "duration": 0,
-          "skip": false,
-          "todo": false,
-          "error": {
-            "failureType": "testCodeFailure",
-            "cause": {
-              "code": "ERR_TEST_FAILURE"
-            },
-            "code": "ERR_TEST_FAILURE"
-          }
-        }
-      ],
+      "tests": [],
       "duration": 0,
       "skip": false,
       "todo": false,
       "error": {
-        "failureType": "subtestsFailed",
-        "cause": "test failed",
-        "code": "ERR_TEST_FAILURE",
-        "exitCode": 1,
-        "signal": null
+        "failureType": "testCodeFailure",
+        "cause": {},
+        "code": "ERR_TEST_FAILURE"
       }
     },
     {
-      "name": "test/resources/sample-tests/nested.test.js",
+      "name": "module",
       "file": "test/resources/sample-tests/nested.test.js",
       "tests": [
         {
-          "name": "module",
+          "name": "function",
           "file": "test/resources/sample-tests/nested.test.js",
           "tests": [
             {
-              "name": "function",
+              "name": "behavior",
               "file": "test/resources/sample-tests/nested.test.js",
               "tests": [
                 {
-                  "name": "behavior",
+                  "name": "asserts 1 === 1",
                   "file": "test/resources/sample-tests/nested.test.js",
-                  "tests": [
-                    {
-                      "name": "asserts 1 === 1",
-                      "file": "test/resources/sample-tests/nested.test.js",
-                      "tests": [],
-                      "duration": 0,
-                      "skip": false,
-                      "todo": false
-                    },
-                    {
-                      "name": "fails",
-                      "file": "test/resources/sample-tests/nested.test.js",
-                      "tests": [],
-                      "duration": 0,
-                      "skip": false,
-                      "todo": false,
-                      "failure": {
-                        "failureType": "testCodeFailure",
-                        "cause": {
-                          "generatedMessage": false,
-                          "code": "ERR_ASSERTION",
-                          "actual": 1,
-                          "expected": 2,
-                          "operator": "strictEqual"
-                        },
-                        "code": "ERR_TEST_FAILURE"
-                      }
-                    }
-                  ],
+                  "tests": [],
+                  "duration": 0,
+                  "skip": false,
+                  "todo": false
+                },
+                {
+                  "name": "fails",
+                  "file": "test/resources/sample-tests/nested.test.js",
+                  "tests": [],
                   "duration": 0,
                   "skip": false,
                   "todo": false,
-                  "error": {
-                    "failureType": "subtestsFailed",
+                  "failure": {
+                    "failureType": "testCodeFailure",
                     "cause": {
-                      "code": "ERR_TEST_FAILURE"
+                      "generatedMessage": false,
+                      "code": "ERR_ASSERTION",
+                      "actual": 1,
+                      "expected": 2,
+                      "operator": "strictEqual"
                     },
                     "code": "ERR_TEST_FAILURE"
                   }
@@ -92,9 +58,7 @@
               "todo": false,
               "error": {
                 "failureType": "subtestsFailed",
-                "cause": {
-                  "code": "ERR_TEST_FAILURE"
-                },
+                "cause": {},
                 "code": "ERR_TEST_FAILURE"
               }
             }
@@ -104,9 +68,7 @@
           "todo": false,
           "error": {
             "failureType": "subtestsFailed",
-            "cause": {
-              "code": "ERR_TEST_FAILURE"
-            },
+            "cause": {},
             "code": "ERR_TEST_FAILURE"
           }
         }
@@ -116,31 +78,20 @@
       "todo": false,
       "error": {
         "failureType": "subtestsFailed",
-        "cause": "test failed",
-        "code": "ERR_TEST_FAILURE",
-        "exitCode": 1,
-        "signal": null
+        "cause": {},
+        "code": "ERR_TEST_FAILURE"
       }
     },
     {
-      "name": "test/resources/sample-tests/skip.test.js",
+      "name": "behavior",
       "file": "test/resources/sample-tests/skip.test.js",
       "tests": [
         {
-          "name": "behavior",
+          "name": "skipped test",
           "file": "test/resources/sample-tests/skip.test.js",
-          "tests": [
-            {
-              "name": "skipped test",
-              "file": "test/resources/sample-tests/skip.test.js",
-              "tests": [],
-              "duration": 0,
-              "skip": true,
-              "todo": false
-            }
-          ],
+          "tests": [],
           "duration": 0,
-          "skip": false,
+          "skip": true,
           "todo": false
         }
       ],
@@ -149,61 +100,34 @@
       "todo": false
     },
     {
-      "name": "test/resources/sample-tests/timeout.test.js",
+      "name": "callback timing out",
       "file": "test/resources/sample-tests/timeout.test.js",
-      "tests": [
-        {
-          "name": "callback timing out",
-          "file": "test/resources/sample-tests/timeout.test.js",
-          "tests": [],
-          "duration": 0,
-          "skip": false,
-          "todo": false,
-          "error": {
-            "failureType": "testTimeoutFailure",
-            "cause": {
-              "code": "ERR_TEST_FAILURE"
-            },
-            "code": "ERR_TEST_FAILURE"
-          }
-        }
-      ],
+      "tests": [],
       "duration": 0,
       "skip": false,
       "todo": false,
       "error": {
-        "failureType": "subtestsFailed",
-        "cause": "test failed",
-        "code": "ERR_TEST_FAILURE",
-        "exitCode": 1,
-        "signal": null
+        "failureType": "testTimeoutFailure",
+        "cause": {},
+        "code": "ERR_TEST_FAILURE"
       }
     },
     {
-      "name": "test/resources/sample-tests/todo.test.js",
+      "name": "my pending test",
       "file": "test/resources/sample-tests/todo.test.js",
       "tests": [
         {
-          "name": "my pending test",
+          "name": "eventually it will assert something",
           "file": "test/resources/sample-tests/todo.test.js",
-          "tests": [
-            {
-              "name": "eventually it will assert something",
-              "file": "test/resources/sample-tests/todo.test.js",
-              "tests": [],
-              "duration": 0,
-              "skip": false,
-              "todo": false
-            }
-          ],
+          "tests": [],
           "duration": 0,
           "skip": false,
-          "todo": true
+          "todo": false
         }
       ],
       "duration": 0,
       "skip": false,
-      "todo": false
+      "todo": true
     }
   ],
   "duration": 0

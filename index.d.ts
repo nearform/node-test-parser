@@ -13,7 +13,7 @@ export interface TestSuite {
 }
 
 export interface Report {
-  testSuites: TestSuite[],
+  tests: TestSuite[],
   duration: number,
 }
 
