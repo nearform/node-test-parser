@@ -1,7 +1,7 @@
+import { Readable } from 'stream'
 import { expectType } from 'tsd'
 import parseReport, { Report } from '.'
-import mockedSource from './test/resources/mocked-source.js'
 
-const report = await parseReport(mockedSource)
+const report = await parseReport(Readable.toWeb(Readable.from([])))
 
 expectType<Report>(report)

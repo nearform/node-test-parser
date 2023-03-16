@@ -9,7 +9,7 @@ import {
 const durationRegex = /duration_ms\s([\d.]+)/
 
 export default async function parseReport(source) {
-  const testSuites = []
+  const tests = []
   const testStack = []
 
   let diagnosticMessage = ''
@@ -38,7 +38,7 @@ export default async function parseReport(source) {
 
         testStack.push({
           name,
-          file: file ?? name,
+          file,
           tests: []
         })
 
@@ -78,7 +78,7 @@ export default async function parseReport(source) {
         if (lastTestInStack()) {
           lastTestInStack().tests.push(currentTest)
         } else {
-          testSuites.push(currentTest)
+          tests.push(currentTest)
         }
 
         break
@@ -100,7 +100,7 @@ export default async function parseReport(source) {
   }
 
   return {
-    testSuites,
+    tests,
     duration: totalDuration
   }
 }
