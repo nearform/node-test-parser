@@ -1,6 +1,6 @@
 {
   "name": "node-test-parser",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Node.js test runner report stream parser",
   "main": "index.js",
   "type": "module",
