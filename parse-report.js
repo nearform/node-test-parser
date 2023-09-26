@@ -27,6 +27,11 @@ export default async function parseReport(source) {
     diagnosticMessage = ''
   }
 
+  // Removes file: form the start of the string
+  function parseFilePath(file) {
+    return file.replace(/^file:/, '')
+  }
+
   for await (const event of source) {
     switch (event.type) {
       case EVENT_TEST_START:
@@ -38,7 +43,7 @@ export default async function parseReport(source) {
 
         testStack.push({
           name,
-          file,
+          file: parseFilePath(file),
           tests: []
         })
 
