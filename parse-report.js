@@ -5,6 +5,7 @@ import {
   EVENT_TEST_DIAGNOSTIC,
   ERROR_CODE_TEST_FAILURE
 } from './constants.js'
+import { URL, fileURLToPath } from 'node:url'
 
 const durationRegex = /duration_ms\s([\d.]+)/
 
@@ -27,9 +28,21 @@ export default async function parseReport(source) {
     diagnosticMessage = ''
   }
 
-  // Removes file: form the start of the string
-  function parseFilePath(file) {
-    return file.replace(/^file:/, '')
+  function isFileUrl(urlString) {
+    try {
+      const url = new URL(urlString)
+      return url.protocol === 'file:'
+    } catch (error) {
+      return false
+    }
+  }
+
+  function parseFilePath(fileString) {
+    if (isFileUrl(fileString)) {
+      return fileURLToPath(fileString)
+    } else {
+      return fileString
+    }
   }
 
   for await (const event of source) {
