@@ -43,7 +43,7 @@
                   "failure": {
                     "failureType": "testCodeFailure",
                     "cause": {
-                      "generatedMessage": false,
+                      "generatedMessage": true,
                       "code": "ERR_ASSERTION",
                       "actual": 1,
                       "expected": 2,
@@ -58,7 +58,7 @@
               "todo": false,
               "error": {
                 "failureType": "subtestsFailed",
-                "cause": {},
+                "cause": "1 subtest failed",
                 "code": "ERR_TEST_FAILURE"
               }
             }
@@ -68,7 +68,7 @@
           "todo": false,
           "error": {
             "failureType": "subtestsFailed",
-            "cause": {},
+            "cause": "1 subtest failed",
             "code": "ERR_TEST_FAILURE"
           }
         }
@@ -78,7 +78,7 @@
       "todo": false,
       "error": {
         "failureType": "subtestsFailed",
-        "cause": {},
+        "cause": "1 subtest failed",
         "code": "ERR_TEST_FAILURE"
       }
     },
@@ -108,7 +108,7 @@
       "todo": false,
       "error": {
         "failureType": "testTimeoutFailure",
-        "cause": {},
+        "cause": "test timed out after 100ms",
         "code": "ERR_TEST_FAILURE"
       }
     },

@@ -5,6 +5,7 @@ import {
   EVENT_TEST_DIAGNOSTIC,
   ERROR_CODE_TEST_FAILURE
 } from './constants.js'
+import { URL, fileURLToPath } from 'node:url'
 
 const durationRegex = /duration_ms\s([\d.]+)/
 
@@ -27,6 +28,23 @@ export default async function parseReport(source) {
     diagnosticMessage = ''
   }
 
+  function isFileUrl(urlString) {
+    try {
+      const url = new URL(urlString)
+      return url.protocol === 'file:'
+    } catch (error) {
+      return false
+    }
+  }
+
+  function parseFilePath(fileString) {
+    if (isFileUrl(fileString)) {
+      return fileURLToPath(fileString)
+    } else {
+      return fileString
+    }
+  }
+
   for await (const event of source) {
     switch (event.type) {
       case EVENT_TEST_START:
@@ -38,7 +56,7 @@ export default async function parseReport(source) {
 
         testStack.push({
           name,
-          file,
+          file: parseFilePath(file),
           tests: []
         })
 
