@@ -9,6 +9,14 @@ remove_variables() {
 # Run sample tests and generate the report, ignoring errors
 report=$(node --test --test-reporter ./test/resources/reporter.js ./test/resources/sample-tests || true)
 
+# Output debug information if DEBUG is set
+if [ ! -z "$DEBUG" ]; then
+  echo "Raw test output:"
+  echo "$report"
+  echo "Processed test output (after removing variables):"
+  echo "$(remove_variables "$report")"
+fi
+
 # Compare with expected results
 expected=$(cat ./test/resources/expected.json)
 diff <(remove_variables "$report") <(echo "$expected")

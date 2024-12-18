@@ -7,7 +7,13 @@ import {
 } from './constants.js'
 import { URL, fileURLToPath } from 'node:url'
 
-const durationRegex = /duration_ms\s([\d.]+)/
+const durationRegex = /duration(?:_ms)?\s*([\d.]+)/i
+const debug = process.env.DEBUG ? console.log : () => {}
+
+function validateEvent(event) {
+  if (!event?.type || !event?.data) throw new Error('Invalid event structure')
+  return event
+}
 
 export default async function parseReport(source) {
   const tests = []
@@ -46,10 +52,12 @@ export default async function parseReport(source) {
   }
 
   for await (const event of source) {
+    debug('Processing event:', event)
+    validateEvent(event)
+
     switch (event.type) {
       case EVENT_TEST_START:
-        const {
-          data: { name, file }
+        const { data: { name = 'unnamed test', file = '' } = {}
         } = event
 
         resetDiagnosticMessage()
@@ -66,9 +74,9 @@ export default async function parseReport(source) {
       case EVENT_TEST_FAIL:
         const {
           data: {
-            details: { duration_ms: duration, error },
-            skip,
-            todo
+            details: { duration_ms: duration = 0, error } = {},
+            skip = false,
+            todo = false
           }
         } = event
 
@@ -78,13 +86,20 @@ export default async function parseReport(source) {
         currentTest.todo = todo !== undefined
 
         if (error) {
-          const {
-            cause: { code }
-          } = error
+          try {
+            const { cause } = error
+            const code = cause?.code
 
-          if (code === ERROR_CODE_TEST_FAILURE || code === undefined) {
-            currentTest.error = error
-          } else {
+            // Normalize error structure
+            if (!cause) {
+              error.cause = { code: ERROR_CODE_TEST_FAILURE }
+            }
+
+            if (code === ERROR_CODE_TEST_FAILURE || code === undefined) {
+              currentTest.error = error
+            } else {
+              currentTest.failure = error
+            }
             currentTest.failure = error
           }
         }
@@ -103,8 +118,7 @@ export default async function parseReport(source) {
 
       case EVENT_TEST_DIAGNOSTIC:
         const {
-          data: { message }
-        } = event
+          data: { message = '' } = {} } = event
 
         const durationMatch = message.match(durationRegex)
         if (durationMatch) {
