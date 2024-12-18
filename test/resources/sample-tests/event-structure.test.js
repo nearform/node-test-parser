@@ -11,10 +11,9 @@ describe('event structure handling', () => {
       }
     })
 
-    await assert.rejects(
-      () => parseReport(invalidStream),
-      { message: 'Invalid event structure' }
-    )
+    await assert.rejects(() => parseReport(invalidStream), {
+      message: 'Invalid event structure'
+    })
   })
 
   it('handles missing optional fields with defaults', async () => {

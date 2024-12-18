@@ -57,8 +57,7 @@ export default async function parseReport(source) {
 
     switch (event.type) {
       case EVENT_TEST_START:
-        const { data: { name = 'unnamed test', file = '' } = {}
-        } = event
+        const { data: { name = 'unnamed test', file = '' } = {} } = event
 
         resetDiagnosticMessage()
 
@@ -101,6 +100,8 @@ export default async function parseReport(source) {
               currentTest.failure = error
             }
             currentTest.failure = error
+          } catch (e) {
+            console.error('Error processing test failure:', e)
           }
         }
 
@@ -117,8 +118,7 @@ export default async function parseReport(source) {
         break
 
       case EVENT_TEST_DIAGNOSTIC:
-        const {
-          data: { message = '' } = {} } = event
+        const { data: { message = '' } = {} } = event
 
         const durationMatch = message.match(durationRegex)
         if (durationMatch) {
