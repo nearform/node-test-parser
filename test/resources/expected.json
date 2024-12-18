@@ -128,6 +128,33 @@
       "duration": 0,
       "skip": false,
       "todo": true
+    },
+    {
+      "name": "event structure handling",
+      "file": "test/resources/sample-tests/event-structure.test.js",
+      "tests": [
+        {
+          "name": "throws error on completely invalid event",
+          "file": "test/resources/sample-tests/event-structure.test.js",
+          "tests": [],
+          "duration": 0,
+          "skip": false,
+          "todo": false,
+          "error": {
+            "failureType": "testCodeFailure",
+            "cause": { "code": "ERR_TEST_FAILURE" }
+          }
+        },
+        {
+          "name": "handles missing optional fields with defaults",
+          "file": "test/resources/sample-tests/event-structure.test.js",
+          "tests": [],
+          "duration": 0,
+          "skip": false,
+          "todo": false
+        }
+      ],
+      "duration": 0
     }
   ],
   "duration": 0

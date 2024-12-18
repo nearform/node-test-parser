@@ -17,4 +17,7 @@ export interface Report {
   duration: number,
 }
 
-export default function parseReport(report: ReadableStream): Report
+/**
+ * Parses test runner output into a structured report format
+ */
+export default function parseReport(report: ReadableStream, debug?: boolean): Report
