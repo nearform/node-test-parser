@@ -1,6 +1,8 @@
 # node-test-parser
 
 ![CI](https://github.com/nearform/node-test-parser/actions/workflows/ci.yml/badge.svg?event=push)
+![NPM Version](https://img.shields.io/npm/v/node-test-parser)
+
 
 ## Installation
 
