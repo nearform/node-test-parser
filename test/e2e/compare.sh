@@ -7,7 +7,7 @@ remove_variables() {
 }
 
 # Run sample tests and generate the report, ignoring errors
-report=$(node --test --test-reporter ./test/resources/reporter.js ./test/resources/sample-tests || true)
+report=$(node --test --test-reporter ./test/resources/reporter.js ./test/resources/sample-tests/**.* || true)
 
 # Compare with expected results
 expected=$(cat ./test/resources/expected.json)

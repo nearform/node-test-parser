@@ -8,9 +8,9 @@
       "skip": false,
       "todo": false,
       "error": {
+        "code": "ERR_TEST_FAILURE",
         "failureType": "testCodeFailure",
-        "cause": {},
-        "code": "ERR_TEST_FAILURE"
+        "cause": {}
       }
     },
     {
@@ -41,6 +41,7 @@
                   "skip": false,
                   "todo": false,
                   "failure": {
+                    "code": "ERR_TEST_FAILURE",
                     "failureType": "testCodeFailure",
                     "cause": {
                       "generatedMessage": true,
@@ -48,8 +49,7 @@
                       "actual": 1,
                       "expected": 2,
                       "operator": "strictEqual"
-                    },
-                    "code": "ERR_TEST_FAILURE"
+                    }
                   }
                 }
               ],
@@ -57,9 +57,9 @@
               "skip": false,
               "todo": false,
               "error": {
+                "code": "ERR_TEST_FAILURE",
                 "failureType": "subtestsFailed",
-                "cause": "1 subtest failed",
-                "code": "ERR_TEST_FAILURE"
+                "cause": "1 subtest failed"
               }
             }
           ],
@@ -67,9 +67,9 @@
           "skip": false,
           "todo": false,
           "error": {
+            "code": "ERR_TEST_FAILURE",
             "failureType": "subtestsFailed",
-            "cause": "1 subtest failed",
-            "code": "ERR_TEST_FAILURE"
+            "cause": "1 subtest failed"
           }
         }
       ],
@@ -77,9 +77,9 @@
       "skip": false,
       "todo": false,
       "error": {
+        "code": "ERR_TEST_FAILURE",
         "failureType": "subtestsFailed",
-        "cause": "1 subtest failed",
-        "code": "ERR_TEST_FAILURE"
+        "cause": "1 subtest failed"
       }
     },
     {
@@ -107,9 +107,9 @@
       "skip": false,
       "todo": false,
       "error": {
+        "code": "ERR_TEST_FAILURE",
         "failureType": "testTimeoutFailure",
-        "cause": "test timed out after 100ms",
-        "code": "ERR_TEST_FAILURE"
+        "cause": "test timed out after 100ms"
       }
     },
     {
