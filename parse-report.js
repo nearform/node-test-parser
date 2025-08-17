@@ -12,20 +12,26 @@ const durationRegex = /duration_ms\s([\d.]+)/
 export default async function parseReport(source) {
   const tests = []
   const testStack = []
-
-  let diagnosticMessage = ''
+  const allTests = Object.create(null)
+  let currentTest
   let totalDuration = 0
 
   function lastTestInStack() {
     return testStack.length ? testStack[testStack.length - 1] : null
   }
 
-  function appendDiagnosticMessage(message) {
-    diagnosticMessage += `${message}\n`
+  function appendDiagnosticMessage(data) {
+    // currentTest is for diagnostics after all tests are complete
+    // which do not have a file, line, or column.
+    const t = allTests[testId(data)] || currentTest
+    if (!t.diagnostic) {
+      t.diagnostic = ''
+    }
+    t.diagnostic += `${data.message}\n`
   }
 
-  function resetDiagnosticMessage() {
-    diagnosticMessage = ''
+  function testId(data) {
+    return [data.file, data.line, data.column].join('\0')
   }
 
   function isFileUrl(urlString) {
@@ -52,13 +58,13 @@ export default async function parseReport(source) {
           data: { name, file }
         } = event
 
-        resetDiagnosticMessage()
-
-        testStack.push({
+        const t = {
           name,
           file: parseFilePath(file),
           tests: []
-        })
+        }
+        allTests[testId(event.data)] = t
+        testStack.push(t)
 
         break
 
@@ -72,7 +78,7 @@ export default async function parseReport(source) {
           }
         } = event
 
-        const currentTest = testStack.pop()
+        currentTest = testStack.pop()
         currentTest.duration = duration
         currentTest.skip = skip !== undefined
         currentTest.todo = todo !== undefined
@@ -87,10 +93,6 @@ export default async function parseReport(source) {
           } else {
             currentTest.failure = error
           }
-        }
-
-        if (diagnosticMessage) {
-          currentTest.diagnostic = diagnosticMessage
         }
 
         if (lastTestInStack()) {
@@ -111,7 +113,7 @@ export default async function parseReport(source) {
           totalDuration = parseFloat(durationMatch[1])
         }
 
-        appendDiagnosticMessage(message)
+        appendDiagnosticMessage(event.data)
 
         break
     }

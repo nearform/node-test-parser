@@ -31,7 +31,8 @@
                   "tests": [],
                   "duration": 0,
                   "skip": false,
-                  "todo": false
+                  "todo": false,
+                  "diagnostic": "JJJJAJAJSDADS\n"
                 },
                 {
                   "name": "fails",
@@ -50,7 +51,8 @@
                       "expected": 2,
                       "operator": "strictEqual"
                     }
-                  }
+                  },
+                  "diagnostic": "IIIIOASDASD\n"
                 }
               ],
               "duration": 0,
@@ -127,7 +129,8 @@
       ],
       "duration": 0,
       "skip": false,
-      "todo": true
+      "todo": true,
+      "diagnostic": "tests 6\nsuites 5\npass 2\nfail 2\ncancelled 1\nskipped 1\ntodo 0\nduration_ms 0\n"
     }
   ],
   "duration": 0
