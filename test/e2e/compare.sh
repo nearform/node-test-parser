@@ -3,7 +3,7 @@ set -e
 
 # Function to replace test duration with 0 and remove file paths
 remove_variables() {
-  echo "$1" | sed -E 's/\"duration\": [0-9\.]+/\"duration\": 0/g' | sed -E 's/\/.*\/test\//test\//g'
+  echo "$1" | sed -E 's/\"duration\": [0-9.]+/\"duration\": 0/g' | sed -E 's/\/.*\/test\//test\//g' | sed -E 's/("operator": "strictEqual"),/\1/g' | sed -E '/ *"diff": "simple"/d'
 }
 
 # Run sample tests and generate the report, ignoring errors
