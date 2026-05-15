@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "npm run test:e2e && npm run test:typescript",
-    "test:e2e": "./test/e2e/compare.sh",
+    "test:e2e": "node ./test/e2e/compare.js",
     "test:typescript": "tstyche",
     "prepare": "husky"
   },
