@@ -3,12 +3,13 @@
   "version": "3.1.0",
   "description": "Node.js test runner report stream parser",
   "main": "index.js",
+  "types": "index.d.ts",
   "type": "module",
   "scripts": {
     "lint": "eslint .",
     "test": "npm run test:e2e && npm run test:typescript",
     "test:e2e": "./test/e2e/compare.sh",
-    "test:typescript": "tsd",
+    "test:typescript": "tstyche",
     "prepare": "husky"
   },
   "repository": {
@@ -37,7 +38,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^16.0.0",
     "prettier": "^3.0.3",
-    "tsd": "^0.33.0"
+    "tstyche": "^7.1.0"
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix"
