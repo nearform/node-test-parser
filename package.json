@@ -30,14 +30,16 @@
   },
   "homepage": "https://github.com/nearform/node-test-parser#readme",
   "devDependencies": {
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
-    "eslint": "^8.51.0",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.0.0",
+    "globals": "^17.9.0",
     "husky": "^9.0.11",
-    "lint-staged": "^16.0.0",
-    "prettier": "^3.0.3",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.3",
     "tstyche": "^7.1.0"
   },
   "lint-staged": {
