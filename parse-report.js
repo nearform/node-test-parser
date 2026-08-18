@@ -38,7 +38,7 @@ export default async function parseReport(source) {
     try {
       const url = new URL(urlString)
       return url.protocol === 'file:'
-    } catch (error) {
+    } catch {
       return false
     }
   }
