@@ -38,7 +38,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "globals": "^17.9.0",
     "husky": "^9.0.11",
-    "lint-staged": "^16.2.7",
+    "lint-staged": "^17.3.0",
     "prettier": "^3.7.3",
     "tstyche": "^7.1.0"
   },
